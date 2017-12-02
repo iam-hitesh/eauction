@@ -82,8 +82,6 @@ include 'nav.php';
         <?php
         $auction_sql = "SELECT * FROM auction_table";
         $auction_query = mysqli_query($conn,$auction_sql);
-
-
         while($auction = mysqli_fetch_array($auction_query)){
             ?>
             <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -91,9 +89,9 @@ include 'nav.php';
                     <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                     <div class="card-body">
                         <h4 class="card-title">
-                            <a href="#">Project One</a>
+                            <a href="#"><?php echo $auction['product_name']; ?></a>
                         </h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+                        <p class="card-text"><?php echo $auction['product_details']; ?></p>
                     </div>
                 </div>
             </div>
@@ -112,10 +110,8 @@ include 'nav.php';
                 <li>
                     <strong>Online Bidding</strong>
                 </li>
-                <li>jQuery</li>
-                <li>Font Awesome</li>
-                <li>Working contact form with validation</li>
-                <li>Unstyled page elements for easy customization</li>
+                <li>Real Time Bidding Details</li>
+                <li>Proper Management</li>
             </ul>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
         </div>
@@ -133,7 +129,7 @@ include 'nav.php';
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
         </div>
         <div class="col-md-4">
-            <a class="btn btn-lg btn-secondary btn-block" href="#">Register Now</a>
+            <a class="btn btn-lg btn-secondary btn-block" href="reg.php">Register Now</a>
         </div>
     </div>
 

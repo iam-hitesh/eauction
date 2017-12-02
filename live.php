@@ -11,7 +11,9 @@ else {
     $auction_sql = "SELECT * FROM auction_table WHERE auction_id = '$id'";
     $auction_query = mysqli_query($conn,$auction_sql);
     $auction_product = mysqli_fetch_array($auction_query);
-
+    if($auction_product['expired'] == 1){
+        header('Location:dashboard.php');
+    }
     if($auction_product['expired'] == 0){
         $username = $_SESSION['username'];
         $user_sql = "SELECT * FROM users where username='$username'";
@@ -81,7 +83,9 @@ else {
                         <button type="submit" name="bid" class="btn btn-primary" id="bid">Bid</button>
                     </form>
                 </div>
+                <div class="col-lg-4 mb-4">
 
+                </div>
             </div>
             <h2>People's Bid</h2>
             <div class="row">
@@ -89,7 +93,7 @@ else {
                     <div class="card h-100">
                         <ul class="list-group list-group-flush">
                             <?php
-                            $bid_fetch_sql = "SELECT * FROM bidding WHERE auction_id='$id' LIMIT 15";
+                            $bid_fetch_sql = "SELECT * FROM bidding WHERE auction_id='$id' ORDER BY bid_time DESC LIMIT 15";
                             $bid_fetch_query = mysqli_query($conn,$bid_fetch_sql);
                             while($bid_fetch_data = mysqli_fetch_array($bid_fetch_query)){
                                 $userid = $bid_fetch_data['user_id'];
@@ -118,4 +122,5 @@ else {
         header('Location:dashboard.php');
     }
 }
+
 ?>

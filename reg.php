@@ -1,9 +1,10 @@
 <?php
 include'connection.php';
 include 'include.php';
-session_set();
 error_reporting(0);
-
+if(isset($_SESSION["username"])){
+    header('Location:dashboard.php');
+}
 if(isset($_POST['reg'])){
     $fname = mysqli_real_escape_string($conn,$_POST['fname']);
     $lname = mysqli_real_escape_string($conn,$_POST['lname']);
@@ -20,11 +21,11 @@ if(isset($_POST['reg'])){
 
         if($reg_query){
             echo "<script>alert('Successfully Registered')</script>";
-            echo "<script>window.location = \"reg.php\";</script>";
+            echo "<script>window.location = \"login.php\";</script>";
         }
         else{
             echo "<script>alert('Try Again')</script>";
-            echo "<script>window.location = \"login.php\";</script>";
+            echo "<script>window.location = \"reg.php\";</script>";
         }
     }
     else{
@@ -64,7 +65,7 @@ else{
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Please Sign Up</h3>
                     </div>
                     <div class="panel-body">
                         <form role="form" name="reg" method="POST" action="">
@@ -94,7 +95,7 @@ else{
                                     <input class="form-control" placeholder="Confirm Password" name="cpassword" type="password" value="">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <button name="reg" class="btn btn-lg btn-success btn-block">Login</button>
+                                <button name="reg" class="btn btn-lg btn-success btn-block">SignUp</button>
                             </fieldset>
                         </form>
                     </div>
@@ -103,12 +104,9 @@ else{
         </div>
     </div>
     <!-- Footer -->
-    <footer class="py-5 bg-dark" style="position:absolute;bottom:0;width:100%;height:60px;">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Rajasthan Governement</p>
-        </div>
-        <!-- /.container -->
-    </footer>
+    <?php
+    include 'footer.php';
+    ?>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

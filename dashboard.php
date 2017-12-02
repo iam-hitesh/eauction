@@ -51,7 +51,7 @@ include 'nav.php';
     <div class="row">
         <div class="col-lg-6 mb-6">
             <div class="card h-100">
-                <h3 class="card-header">Upcoming Auctions</h3>
+                <h3 class="card-header">Participated Auctions</h3>
                 <ul class="list-group list-group-flush">
                     <?php
                     $user_id = $user_data['user_id'];
@@ -76,7 +76,7 @@ include 'nav.php';
         </div>
         <div class="col-lg-6 mb-6">
             <div class="card card-outline-primary h-100">
-                <h3 class="card-header bg-primary text-white">Participated Auctions</h3>
+                <h3 class="card-header bg-primary text-white">Upcoming Auctions</h3>
                 <ul class="list-group list-group-flush">
                     <?php
                     $upcoming_auctions_sql = "SELECT * FROM auction_table ORDER BY bid_date ASC LIMIT 10";
